@@ -12,15 +12,12 @@ Release:        1
 Summary:        GNOME Tour and Greeter
 
 # * gnome-tour source code is GPLv3+
-# * welcome-fedora.svg is CC-BY-SA
 # * bundled rust crates all include either MIT or GPLv3+ as one of the possible
 #   licenses, which when compiled into gnome-tour binary together with GPLv3+
 #   gnome-tour source code results in effective GPLv3+ for the resulting binary
 License:        GPLv3+ and CC-BY-SA
 URL:            https://gitlab.gnome.org/GNOME/gnome-tour
 Source0:        https://download.gnome.org/sources/gnome-tour/40/gnome-tour-%{tarball_version}.tar.xz
-# https://pagure.io/fedora-workstation/issue/175
-#Source1:        welcome-fedora.svg
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig(glib-2.0)
@@ -33,6 +30,8 @@ BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(libhandy-1)
 #BuildRequires:  /usr/bin/appstream-util
 #BuildRequires:  /usr/bin/desktop-file-validate
+
+# Don't know why GNOME devs use RUST for that small app... This is mandes, even Fedora can't package all rust stuff in good way!
 
 %if 0%{?bundled_rust_deps}
 BuildRequires:  cargo
