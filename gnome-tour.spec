@@ -8,7 +8,7 @@
 
 Name:           gnome-tour
 Version:        40.0
-Release:        2%{?dist}
+Release:        1
 Summary:        GNOME Tour and Greeter
 
 # * gnome-tour source code is GPLv3+
@@ -20,7 +20,7 @@ License:        GPLv3+ and CC-BY-SA
 URL:            https://gitlab.gnome.org/GNOME/gnome-tour
 Source0:        https://download.gnome.org/sources/gnome-tour/40/gnome-tour-%{tarball_version}.tar.xz
 # https://pagure.io/fedora-workstation/issue/175
-Source1:        welcome-fedora.svg
+#Source1:        welcome-fedora.svg
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig(glib-2.0)
@@ -31,8 +31,8 @@ BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  /usr/bin/appstream-util
-BuildRequires:  /usr/bin/desktop-file-validate
+#BuildRequires:  /usr/bin/appstream-util
+#BuildRequires:  /usr/bin/desktop-file-validate
 
 %if 0%{?bundled_rust_deps}
 BuildRequires:  cargo
@@ -141,19 +141,6 @@ Provides: bundled(crate(version-compare/default)) = 0.0.10
 
 Requires: gstreamer1-plugins-good-gtk%{?_isa}
 
-# Removed in F34
-Obsoletes: gnome-getting-started-docs < 3.38.1-2
-Obsoletes: gnome-getting-started-docs-cs < 3.38.1-2
-Obsoletes: gnome-getting-started-docs-de < 3.38.1-2
-Obsoletes: gnome-getting-started-docs-es < 3.38.1-2
-Obsoletes: gnome-getting-started-docs-fr < 3.38.1-2
-Obsoletes: gnome-getting-started-docs-gl < 3.38.1-2
-Obsoletes: gnome-getting-started-docs-hu < 3.38.1-2
-Obsoletes: gnome-getting-started-docs-it < 3.38.1-2
-Obsoletes: gnome-getting-started-docs-pl < 3.38.1-2
-Obsoletes: gnome-getting-started-docs-pt_BR < 3.38.1-2
-Obsoletes: gnome-getting-started-docs-ru < 3.38.1-2
-
 %description
 A guided tour and greeter for GNOME.
 
@@ -162,7 +149,7 @@ A guided tour and greeter for GNOME.
 %autosetup -p1 -n %{name}-%{tarball_version}
 
 # Install Fedora branding
-cp -a %{SOURCE1} data/resources/assets/welcome.svg
+#cp -a %{SOURCE1} data/resources/assets/welcome.svg
 
 %if ! 0%{?bundled_rust_deps}
 sed -i -e '/\(build_by_default\|install\)/s/true/false/' src/meson.build
@@ -194,12 +181,6 @@ sed -i -e '/\(build_by_default\|install\)/s/true/false/' src/meson.build
 
 %find_lang gnome-tour
 
-
-%check
-appstream-util validate-relax --nonet $RPM_BUILD_ROOT%{_datadir}/metainfo/org.gnome.Tour.metainfo.xml
-desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/org.gnome.Tour.desktop
-
-
 %files -f gnome-tour.lang
 %license LICENSE.md
 %doc NEWS README.md
@@ -208,48 +189,3 @@ desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/org.gnome.Tour.des
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Tour.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Tour-symbolic.svg
 %{_datadir}/metainfo/org.gnome.Tour.metainfo.xml
-
-
-%changelog
-* Tue Apr 27 2021 Kalev Lember <klember@redhat.com> - 40.0-2
-- Add missing obsoletes for gnome-getting-started-docs-hu (#1954117)
-
-* Tue Mar 23 2021 Kalev Lember <klember@redhat.com> - 40.0-1
-- Update to 40.0
-
-* Wed Mar 17 2021 Kalev Lember <klember@redhat.com> - 40~beta-5
-- Update the fedora logo in welcome image (#1940041)
-
-* Tue Feb 23 2021 Zbigniew JÄ™drzejewski-Szmek <zbyszek@in.waw.pl> - 40~beta-4
-- Obsolete all language-specific gnome-getting-started-docs subpackages
-
-* Fri Feb 19 2021 Kalev Lember <klember@redhat.com> - 40~beta-3
-- Obsolete gnome-getting-started-docs
-
-* Wed Feb 17 2021 Kalev Lember <klember@redhat.com> - 40~beta-2
-- New welcome image for Fedora branding (thanks, jimmac!)
-
-* Wed Feb 17 2021 Kalev Lember <klember@redhat.com> - 40~beta-1
-- Update to 40.beta
-
-* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.38.0-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
-
-* Tue Oct 20 2020 Kalev Lember <klember@redhat.com> - 3.38.0-2
-- Add missing gstreamer1-plugins-good-gtk dep (#1889657)
-
-* Wed Sep 16 2020 Kalev Lember <klember@redhat.com> - 3.38.0-1
-- Update to 3.38.0
-
-* Mon Sep 14 2020 Kalev Lember <klember@redhat.com> - 3.37.92-2
-- Use a lower res video to improve the layout (thanks jimmac!)
-
-* Tue Sep 08 2020 Kalev Lember <klember@redhat.com> - 3.37.92-1
-- Update to 3.37.92
-
-* Thu Aug 27 2020 Kalev Lember <klember@redhat.com> - 3.37.91-2
-- Add provides for bundled rust crates (#1873108)
-- Clarify licensing for bundled rust crates (#1873108)
-
-* Thu Aug 27 2020 Kalev Lember <klember@redhat.com> - 3.37.91-1
-- Initial Fedora packaging
