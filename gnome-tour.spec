@@ -139,7 +139,7 @@ Provides: bundled(crate(version_check/default)) = 0.9.2
 Provides: bundled(crate(version-compare/default)) = 0.0.10
 %endif
 
-Requires: gstreamer1-plugins-good-gtk%{?_isa}
+Requires: gstreamer1.0-plugins-good
 
 %description
 A guided tour and greeter for GNOME.
