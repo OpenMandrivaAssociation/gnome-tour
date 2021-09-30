@@ -1,4 +1,5 @@
-%global debug_package %{nil}
+#global debug_package %{nil}
+%define _empty_manifest_terminate_build 0
 
 # Use bundled deps as we don't ship the exact right versions for all the
 # required rust libraries
@@ -7,8 +8,8 @@
 %global tarball_version %%(echo %{version} | tr '~' '.')
 
 Name:           gnome-tour
-Version:        40.0
-Release:        1
+Version:        41
+Release:        0.rc.0
 Summary:        GNOME Tour and Greeter
 
 # * gnome-tour source code is GPLv3+
@@ -17,7 +18,7 @@ Summary:        GNOME Tour and Greeter
 #   gnome-tour source code results in effective GPLv3+ for the resulting binary
 License:        GPLv3+ and CC-BY-SA
 URL:            https://gitlab.gnome.org/GNOME/gnome-tour
-Source0:        https://download.gnome.org/sources/gnome-tour/40/gnome-tour-%{tarball_version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-tour/40/gnome-tour-%{tarball_version}.rc.tar.xz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig(glib-2.0)
@@ -145,7 +146,7 @@ A guided tour and greeter for GNOME.
 
 
 %prep
-%autosetup -p1 -n %{name}-%{tarball_version}
+%autosetup -p1 -n %{name}-%{tarball_version}.rc
 
 # Install Fedora branding
 #cp -a %{SOURCE1} data/resources/assets/welcome.svg
