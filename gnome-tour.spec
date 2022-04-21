@@ -6,10 +6,11 @@
 %global bundled_rust_deps 1
 
 %global tarball_version %%(echo %{version} | tr '~' '.')
+%global url_ver %%(echo %{version} | cut -d. -f1)
 
 Name:           gnome-tour
-Version:        41
-Release:        0.rc.0
+Version:        42.0
+Release:        1
 Summary:        GNOME Tour and Greeter
 
 # * gnome-tour source code is GPLv3+
@@ -18,17 +19,17 @@ Summary:        GNOME Tour and Greeter
 #   gnome-tour source code results in effective GPLv3+ for the resulting binary
 License:        GPLv3+ and CC-BY-SA
 URL:            https://gitlab.gnome.org/GNOME/gnome-tour
-Source0:        https://download.gnome.org/sources/gnome-tour/40/gnome-tour-%{tarball_version}.rc.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-tour/%{url_ver}/gnome-tour-%{version}.tar.xz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(libadwaita-1)
 #BuildRequires:  /usr/bin/appstream-util
 #BuildRequires:  /usr/bin/desktop-file-validate
 
