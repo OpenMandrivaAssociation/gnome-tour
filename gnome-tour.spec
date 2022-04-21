@@ -147,7 +147,7 @@ A guided tour and greeter for GNOME.
 
 
 %prep
-%autosetup -p1 -n %{name}-%{tarball_version}.rc
+%autosetup -p1 -n %{name}-%{version}
 
 # Install Fedora branding
 #cp -a %{SOURCE1} data/resources/assets/welcome.svg
