@@ -10,7 +10,7 @@
 
 Name:           gnome-tour
 Version:        43.0
-Release:        1
+Release:        2
 Summary:        GNOME Tour and Greeter
 
 # * gnome-tour source code is GPLv3+
