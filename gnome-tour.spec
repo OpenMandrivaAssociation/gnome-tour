@@ -9,8 +9,8 @@
 %global url_ver %%(echo %{version} | cut -d. -f1)
 
 Name:           gnome-tour
-Version:        43.0
-Release:        2
+Version:        44.0
+Release:        1
 Summary:        GNOME Tour and Greeter
 
 # * gnome-tour source code is GPLv3+
