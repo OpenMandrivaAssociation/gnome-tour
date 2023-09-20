@@ -33,6 +33,11 @@ BuildRequires:  pkgconfig(libadwaita-1)
 #BuildRequires:  /usr/bin/appstream-util
 #BuildRequires:  /usr/bin/desktop-file-validate
 
+%ifarch %{x86_64}
+# FIXME without this, configure barfs on znver1. Need to find a proper fix.
+BuildRequires:	libssh2.so.1()(64bit)
+%endif
+
 # Don't know why GNOME devs use RUST for that small app... This is mandes, even Fedora can't package all rust stuff in good way!
 
 %if 0%{?bundled_rust_deps}
