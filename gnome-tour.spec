@@ -9,7 +9,7 @@
 %global url_ver %%(echo %{version} | cut -d. -f1)
 
 Name:           gnome-tour
-Version:        45.0
+Version:        46.0
 Release:        1
 Summary:        GNOME Tour and Greeter
 
