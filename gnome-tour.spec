@@ -21,6 +21,7 @@ License:        GPLv3+ and CC-BY-SA
 URL:            https://gitlab.gnome.org/GNOME/gnome-tour
 Source0:        https://download.gnome.org/sources/gnome-tour/%{url_ver}/gnome-tour-%{version}.tar.xz
 
+BuildRequires:  gettext
 BuildRequires:  meson
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
