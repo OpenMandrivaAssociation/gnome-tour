@@ -199,3 +199,4 @@ sed -i -e '/\(build_by_default\|install\)/s/true/false/' src/meson.build
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Tour-symbolic.svg
 %{_datadir}/metainfo/org.gnome.Tour.metainfo.xml
 %{_datadir}/gnome-tour/resources.gresource
+%{_datadir}/dbus-1/services/org.gnome.Tour.service
